@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xliff version="1.0" xml:lang="en">
+
+  <file datatype="plaintext" original="color_match.fla" source-language="EN">
+    <header></header>
+    <body>
+      <trans-unit id="001" resname="IDS_BEST_SCORE">
+        <source>Best score:</source>
+      </trans-unit>
+      <trans-unit id="002" resname="IDS_COINS_LEFT">
+        <source>Coins left:</source>
+      </trans-unit>
+      <trans-unit id="003" resname="IDS_EXPERIENCE">
+        <source>Experience:</source>
+      </trans-unit>
+      <trans-unit id="004" resname="IDS_FRIEND_LEVEL">
+        <source>Level</source>
+      </trans-unit>
+      <trans-unit id="005" resname="IDS_FRIEND_POINTS">
+        <source>Points</source>
+      </trans-unit>
+      <trans-unit id="006" resname="IDS_GAME_OVER">
+        <source>Game over!</source>
+      </trans-unit>
+      <trans-unit id="007" resname="IDS_GAMES_LEFT">
+        <source>Games left:</source>
+      </trans-unit>
+      <trans-unit id="008" resname="IDS_INVITE">
+        <source>Invite a friend!</source>
+      </trans-unit>
+      <trans-unit id="009" resname="IDS_LAST_SCORE">
+        <source>Score:</source>
+      </trans-unit>
+      <trans-unit id="010" resname="IDS_LEVEL_PROGRESS">
+        <source>Progress:</source>
+      </trans-unit>
+      <trans-unit id="011" resname="IDS_LOADING">
+        <source>Loading...</source>
+      </trans-unit>
+      <trans-unit id="012" resname="IDS_NO_MORE_GAMES">
+        <source>You have no games left. Come back a bit later, there will be some more!</source>
+      </trans-unit>
+      <trans-unit id="013" resname="IDS_PLAYER_LEVEL">
+        <source>Level:</source>
+      </trans-unit>
+      <trans-unit id="014" resname="IDS_PLAYER_SCORE">
+        <source>Score:</source>
+      </trans-unit>
+      <trans-unit id="015" resname="IDS_SCORE">
+        <source>Score:</source>
+      </trans-unit>
+      <trans-unit id="016" resname="IDS_TIME_LEFT">
+        <source>Time:</source>
+      </trans-unit>
+      <trans-unit id="017" resname="IDS_WAIT_A_BIT">
+        <source>Just a sec!</source>
+      </trans-unit>
+    </body>
+  </file>
+
+</xliff>

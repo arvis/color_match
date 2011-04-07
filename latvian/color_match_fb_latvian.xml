@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xliff version="1.0" xml:lang="latvian">
+
+  <file datatype="plaintext" original="color_match_fb.fla" source-language="EN">
+    <header></header>
+    <body>
+      <trans-unit id="001" resname="IDS_BEST_SCORE">
+        <source>Labākais:</source>
+      </trans-unit>
+      <trans-unit id="002" resname="IDS_COINS_LEFT">
+        <source>monētas:</source>
+      </trans-unit>
+      <trans-unit id="003" resname="IDS_EXPERIENCE">
+        <source>Pieredze:</source>
+      </trans-unit>
+      <trans-unit id="004" resname="IDS_FRIEND_LEVEL">
+        <source>limenis</source>
+      </trans-unit>
+      <trans-unit id="005" resname="IDS_FRIEND_POINTS">
+        <source>punkti</source>
+      </trans-unit>
+      <trans-unit id="006" resname="IDS_GAME_OVER">
+        <source>Spēle beigusies!</source>
+      </trans-unit>
+      <trans-unit id="007" resname="IDS_GAMES_LEFT">
+        <source>Atlikušas spēles:</source>
+      </trans-unit>
+      <trans-unit id="008" resname="IDS_INVITE">
+        <source>Uzaicini draugu!</source>
+      </trans-unit>
+      <trans-unit id="009" resname="IDS_LAST_SCORE">
+        <source>Pēdējoreiz:</source>
+      </trans-unit>
+      <trans-unit id="010" resname="IDS_LEVEL_PROGRESS">
+        <source>Progress:</source>
+      </trans-unit>
+      <trans-unit id="011" resname="IDS_LOADING">
+        <source>Ielādējam...</source>
+      </trans-unit>
+      <trans-unit id="012" resname="IDS_NO_MORE_GAMES">
+        <source>Spēļu limits ir izsmelts. Pienāc pēc brīža, tad būs vēl!</source>
+      </trans-unit>
+      <trans-unit id="013" resname="IDS_PLAYER_LEVEL">
+        <source>Līmenis:</source>
+      </trans-unit>
+      <trans-unit id="014" resname="IDS_PLAYER_SCORE">
+        <source>Punkti:</source>
+      </trans-unit>
+      <trans-unit id="015" resname="IDS_SCORE">
+        <source>Rezultāts:</source>
+      </trans-unit>
+      <trans-unit id="016" resname="IDS_START_GAME">
+        <source>Sākt spēli</source>
+      </trans-unit>
+      <trans-unit id="017" resname="IDS_TIME_LEFT">
+        <source>Laiks:</source>
+      </trans-unit>
+      <trans-unit id="018" resname="IDS_WAIT_A_BIT">
+        <source>Vienu mirklīti!</source>
+      </trans-unit>
+    </body>
+  </file>
+
+</xliff>
