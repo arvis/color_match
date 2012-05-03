@@ -203,6 +203,7 @@
 		}
 		
 		public function onClickStart( event:MouseEvent ):void{
+			
 			if (!canStartGame) return;
 			dispatchEvent( new NavigationEvent( NavigationEvent.START ) );
 		}
@@ -234,6 +235,7 @@
 		
 		
 		public function onOverMoreGames( evt:MouseEvent ):void {
+			
 			tooltip= new Tooltip(300,50 , 4, "Iepērc spēles, ja ir izbeigušās, bet vēlies spēlēt.\n Par vienu monētu vari iegādāt 30 spēles.",
 								 0x3467A8,0xFFFFFF , 0.8, true, "left", 10);
 			tooltip.x=evt.stageX;

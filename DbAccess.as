@@ -15,8 +15,9 @@
 	//TODO: extends sprite just for dispatchevent, need to replace extend clasess to other, more meaningfull
 	public class DbAccess extends Sprite  {
 
-		const hostName:String="http://46.137.108.111/plaukski/";
+		const hostName:String="";
 		var sendLoad:URLLoader; 
+		var offline:Boolean=true;
 
 		public function DbAccess() {
 			// constructor code
@@ -28,6 +29,7 @@
 		
 		public function saveScore(uid:Number,score:Number,return_Json:Boolean=true){
 			try {
+			if (offline) return;	
 			var save_link="save_data.php";
 			
 			var URLReq:URLRequest = new URLRequest(hostName+save_link);
@@ -108,7 +110,7 @@
 				if (funct==null){
 					funct=onJsonComplete;
 				}
-				
+				//trace("getDataTemplate on process" );
 				sendLoad.addEventListener(Event.COMPLETE, funct, false, 0, true);
 				sendLoad.addEventListener(IOErrorEvent.IO_ERROR, onIOError, false, 0, true);
 				sendLoad.load(URLReq);
@@ -119,8 +121,7 @@
 
 		}
 		
-		function onIOError(evt:IOErrorEvent):void {
-			trace("on onIOError");
+		public function onIOError(evt:IOErrorEvent):void {
 			trace("onIOError" + evt.text);
 			var responseText:String  = "" + evt.text;
 			
@@ -141,6 +142,7 @@
 		
 		function onBuyCoinsStartComplete(evt:Event){
 			//TODO: set other event listener
+			trace("start onBuyCoinsStartComplete");
 			var funct:String =GameEvent.GET_MORE_COINS;
 			onJsonCompleteTemplate(evt,funct);
 		}
@@ -150,6 +152,7 @@
 		function onJsonCompleteTemplate(evt:Event,complete_function:String){
 			try {
 				var responseText:String = ""+evt.target.data;
+				//trace("onJsonCompleteTemplate "+ responseText);
 				
 				sendLoad.removeEventListener(Event.COMPLETE, onJsonComplete);
 				sendLoad.removeEventListener(IOErrorEvent.IO_ERROR, onIOError);
@@ -158,7 +161,7 @@
 				var retArr:Array=new Array();
 				retArr.push(JsonData);
 				
-				trace("onJsonCompleteTemplate "+responseText);
+				//trace("onJsonCompleteTemplate "+responseText);
 				//based on return info choose event 
 				dispatchEvent(new GameEvent(retArr,complete_function));
 				
@@ -181,7 +184,7 @@
 				var retArr:Array=new Array();
 				retArr.push(JsonData);
 				
-				trace("onJsonComplete "+responseText);
+				//trace("onJsonComplete "+responseText);
 				//based on return info choose event 
 				if (JsonData["uid"])
 					dispatchEvent(new GameEvent(retArr, GameEvent.GET_SCORE));
@@ -198,6 +201,7 @@
 
 		public function getFriendsList(currentPage:int,friendsPerPage:int) {
 			//TODO: think if we need uid to pass
+			//trace("getFriendsList start");
 			var variables:URLVariables = new URLVariables();
 			variables.page_no=""+currentPage;
 			

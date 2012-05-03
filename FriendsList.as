@@ -24,8 +24,16 @@
 		private var pageCount:int=1;
 		private var friendsCount:int=1;
 		private const friendsPerPage:int=5;
+		// for offline play
+		private var offline:Boolean=true;
 		
 		public function FriendsList() {
+			
+			if (offline){
+				this.visible=false;
+				this.enabled=false;
+				return;
+			}
 			
 			forwardButton.addEventListener( MouseEvent.CLICK, goForward);
 			backButton.addEventListener( MouseEvent.CLICK, goBack);
@@ -40,6 +48,7 @@
 		private function loadData() {
 			setPageCount();
 			if (!db){
+				trace("loadData");
 				db=new DbAccess();
 				db.addEventListener( GameEvent.GET_FRIENDS_LIST, loadImages);
 			}
@@ -50,6 +59,7 @@
 			try {
 				//bulkLoader = new BulkLoader("friends_list"); 
 				//bulkLoader.logLevel = BulkLoader.LOG_INFO;
+				trace("starting loadImages");
 				jsonObj= evt.gameData[0];
 				
 				//get friend count param and remove it
@@ -64,7 +74,6 @@
 				var friendInfo:Object;
 				var friendObj:FriendScore;
 				var friendIndex:int=0;
-
 
 				//clear prevoius page pictures 
 				for (var a:int=0;a<friendsPerPage;a++){
@@ -206,14 +215,17 @@
 			myLoader= new Loader();
 			myLoader.load(urlObj);
 			
+			trace("start loading pictures");
 			myLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, loadProgress);
 			myLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete);
+			myLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, handleError);
+
 		}
 		
 		private function setPageCount(){
 			try {
 				pageCount=Math.ceil(friendsCount/friendsPerPage);
-				trace("page count is " + pageCount);
+				trace("page count is-" + pageCount);
 			}
 			catch(err:Error){
 				trace("loadComplete error "+err.message );
@@ -230,6 +242,11 @@
 			
 			pageCount=Math.ceil(friendsCount/friendsPerPage);
 		}
+		
+		public function handleError(event:IOErrorEvent):void{
+			trace(event.target);
+		}
+		
 		
 		
 		private function goBack(evt:MouseEvent){

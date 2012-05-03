@@ -17,7 +17,7 @@
 		var waitWindow:WaitWindow;
 		var db:DbAccess;
 		var userData:Object;
-		var offline_play:Boolean=false;
+		public const offline_play:Boolean=true;
 		//var preloader:Preloader;
 		
 		
@@ -29,7 +29,6 @@
 		
 		private function showPreloader(){
 			//var loaded:Number = this.stage.loaderInfo.bytesLoaded;
-			//trace("loaded "+loaded);
 			
 			//preloader=new Preloader();
 			preloader.visible=true;
@@ -42,7 +41,7 @@
 		private function onPreloaderComplete(e:Event):void {
 			trace("preloader complete");
 			initGame();
-			//hidePreloader();
+			hidePreloader();
 		}
 		
 		private function hidePreloader(){
@@ -58,8 +57,9 @@
 		
 		private function initGame(){
 			initUserData();
-			//showStartMenu();
-			getDataFromDb();
+			showStartMenu();
+			
+			//if (!offline_play) getDataFromDb();
 		}
 		
 		
@@ -78,6 +78,13 @@
 			userData["name"] = "";
 			userData["perk1"] = 0;
 			userData["perks"] = "";
+			
+			// set data for offline play
+			if (offline_play){
+				userData["level"]=3;
+				userData["games_left"]=99;
+			}
+			
 		}
 		
 		
@@ -110,11 +117,14 @@
 				
 				//FIXME: more elegant solution
 				// FIXME: game fails, if there is reading from db fails
-				if (function_url=="new_game.php"){
-					db.getNewGameData(function_url);
+				if (!offline_play){
+					if (function_url=="new_game.php"){
+						db.getNewGameData(function_url);
+					}
+					else
+						db.getDataTemplate(function_url);
 				}
-				else
-					db.getDataTemplate(function_url);
+				
 			}
 			catch (err:Error) {
 				trace("getDataFromDb "+err.message); 
@@ -209,11 +219,15 @@
 				//waitTimer.start();
 				
 				gameField.initGameFieldData();
-
-				db.saveScore(userData["uid"],gameScore);
-				trace("game score saved-"+gameScore);
-				//showStartMenu();
-
+				if (!offline_play){
+					db.saveScore(userData["uid"],gameScore);
+					trace("game score saved-"+gameScore);
+				}
+				else {
+					// TODO: wait for 2 seconds and remove
+					this.removeChild(gameOverMenu);
+					showStartMenu();
+				}
 
 				//gameOverMenu.addEventListener( NavigationEvent.START, restartGame );
 				//this.addChild(gameOverMenu);  

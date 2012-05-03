@@ -37,11 +37,11 @@
 		private function onBuyThirtyCoins (evt:MouseEvent){
 			try {
 				//TODO: new pyament addition
-				db.buyMoreCoins(760,5);
+				db.buyMoreCoins(799,5);
 
 			}
 			catch (err:Error) {
-				trace("onBuyTenCoins "+err.message); 
+				trace("onBuyThirtyCoins "+err.message); 
 			}
 		}
 		
